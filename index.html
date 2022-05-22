@@ -6,42 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Style-->
     <link rel="stylesheet" href="./css/style.css"/>
-    <!--Login page-->
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+    <!--Log in screen view-->
     <title>GAMEFINDER</title>
 </head>
 <body>
+    <div class="bg">
     <!--Header only with logo-->
     <header>
         <nav>
-            <div>
+            <div class="logo">
                 <img src="./assets/images/White.png" alt="GAMEFINDER Logo">
             </div>
         </nav>
     </header>
     <main>
-        <div>
-            <h2>Welcome! Log in or register</h2>
-            <p>Log in to find the games you're looking for!</p>
+        <!--Log in card-->
+        <div class="big-box">
+                <h2 class="big-box__text">Welcome! Log in or register</h2>
+                <p class="big-box__info">Log in to find the games you're looking for!</p>
             <form>
                 <div>
-                    <label for="email">Email</label>
-                    <input type="email" placeholder="Email" name="email" required>
+                    <input class="logIn-input" type="email" placeholder="Email" required>
                 </div>
                 <div>
-                    <label for="psw">Password</label>
-                    <input type="password" placeholder="Password" name="psw" required>
+                    <input class="logIn-input" type="password" placeholder="Password" required>
                 </div>
-                <div>
-                    <label>
+                <div class="psw-box">
+                    <label class="label-checkbox">
                         <input type="checkbox" checked="checked" name="remember">Remember me
                     </label>
                     <span><a href="#">Forgot password?</a></span>
                 </div>
+                <div>
+                    <button class="buttonLogIn" type="submit">Log in</button>
+                </div>
+                <div>
+                    <span>Not registered yet?<a href="#"> Register now</a></span>
+                    <hr data-content="or">
+                </div>
+                <div>
+                    <button class="buttonSocialmedia">Login with Facebook</button>
+                </div>
+                <div>
+                    <button class="buttonSocialmedia">Login with Twitter</button>
+                </div>    
+                <div>
+                    <button class="buttonSocialmedia">Login with Google</button>
+                </div>
             </form>
+            
         </div>
+        <!--End of card-->
     </main>
     <footer>
 
     </footer>
+    </div>
 </body>
 </html>

@@ -1,6 +1,18 @@
-h2 {
-    color: white;
+body {
+    font-family:'Exo', sans-serif;
 }
-p {
-    @extend h2;
+
+/*Log in screen*/
+
+.big-box {
+    h2 {
+        color: #FFFFFF;
+    }
+    
+    p {
+        color: #FFFFFF;
+    } 
 }
+
+
+

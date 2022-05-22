@@ -1,5 +1,13 @@
-h2, p {
-  color: white;
+body {
+  font-family: "Exo", sans-serif;
+}
+
+/*Log in screen*/
+.big-box h2 {
+  color: #FFFFFF;
+}
+.big-box p {
+  color: #FFFFFF;
 }
 
 * {
@@ -7,8 +15,107 @@ h2, p {
   padding: 0;
 }
 
-body {
-  background-color: black;
+.logo {
+  position: absolute;
+  width: 322px;
+  height: 66px;
+  left: 39px;
+  top: 30px;
+}
+
+/*Log in screen view*/
+.bg {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
+  background-size: cover;
+  background: url(../assets/images/Black1.jpg), #C4C4C4;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Log in card */
+.big-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 50px;
+  position: absolute;
+  max-width: 462px;
+  max-height: 702px;
+  left: 932px;
+  top: 178px;
+  background: #303030;
+  background-blend-mode: overlay;
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+}
+
+.big-box__title {
+  margin-bottom: 10px;
+}
+
+.big-box__info {
+  margin-bottom: 32px;
+}
+
+.buttonSocialmedia {
+  margin: 12px 0px;
+  font-family: "Exo", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: none;
+  width: 362px;
+  height: 47px;
+  border: 2px solid #FFFFFF;
+  border-radius: 6px;
+}
+
+.buttonLogIn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 17px 13px 18px 12px;
+  font-family: "Exo";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #FFFFFF;
+  width: 362px;
+  height: 47px;
+  background: #4CC986;
+  border-radius: 6px;
+}
+
+.logIn-input {
+  box-sizing: border-box;
+  width: 362px;
+  height: 47px;
+  margin-bottom: 16px;
+  padding: 16px 10.6px 16px 10.6px;
+  font-family: "Exo", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  background: #FFFFFF;
+  border-radius: 4px;
+}
+
+.psw-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label-checkbox {
+  font-family: "Exo";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: #FFFFFF;
 }
 
 /*# sourceMappingURL=style.css.map */
