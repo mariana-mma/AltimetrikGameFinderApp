@@ -15,56 +15,65 @@
 </head>
 <body>
     <div class="bg">
-    <!--Header only with logo-->
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="./assets/images/White.png" alt="GAMEFINDER Logo">
+        <div class="container">
+        <!--Header only with logo-->
+        <header class="item-a">
+            <nav>
+                <div class="logo">
+                    <img src="./assets/images/White.png" alt="GAMEFINDER Logo">
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="buttonLeft">
+                <img src="./assets/icons/ChevronLeftDark.svg" alt="Left Arrow">
             </div>
-        </nav>
-    </header>
-    <main>
         <!--Log in card-->
-        <div class="big-box">
-                <h2 class="big-box__text">Welcome! Log in or register</h2>
-                <p class="big-box__info">Log in to find the games you're looking for!</p>
-            <form>
-                <div>
-                    <input class="logIn-input" type="email" placeholder="Email" required>
+            <div class="item-c">
+                <div class="big-box">
+                    <h2 class="big-box__text">Welcome! Log in or register</h2>
+                    <p class="big-box__info">Log in to find the games you're looking for!</p>
+                <form>
+                    <div>
+                        <input class="logIn-input" type="email" placeholder="Email" required>
+                    </div>
+                    <div>
+                        <input class="logIn-input" type="password" placeholder="Password" required>
+                    </div>
+                    <div class="psw-box">
+                        <label class="label-checkbox">
+                            <input type="checkbox" checked="checked" name="remember">Remember me
+                        </label>
+                        <span><a href="#">Forgot password?</a></span>
+                    </div>
+                    <div>
+                        <button class="buttonLogIn" type="submit">Log in</button>
+                    </div>
+                    <div>
+                        <span>Not registered yet?<a href="#"> Register now</a></span>
+                        <hr data-content="or">
+                    </div>
+                    <div>
+                        <button class="buttonSocialmedia">Login with Facebook</button>
+                    </div>
+                    <div>
+                        <button class="buttonSocialmedia">Login with Twitter</button>
+                    </div>    
+                    <div>
+                        <button class="buttonSocialmedia">Login with Google</button>
+                    </div>
+                </form>
                 </div>
-                <div>
-                    <input class="logIn-input" type="password" placeholder="Password" required>
-                </div>
-                <div class="psw-box">
-                    <label class="label-checkbox">
-                        <input type="checkbox" checked="checked" name="remember">Remember me
-                    </label>
-                    <span><a href="#">Forgot password?</a></span>
-                </div>
-                <div>
-                    <button class="buttonLogIn" type="submit">Log in</button>
-                </div>
-                <div>
-                    <span>Not registered yet?<a href="#"> Register now</a></span>
-                    <hr data-content="or">
-                </div>
-                <div>
-                    <button class="buttonSocialmedia">Login with Facebook</button>
-                </div>
-                <div>
-                    <button class="buttonSocialmedia">Login with Twitter</button>
-                </div>    
-                <div>
-                    <button class="buttonSocialmedia">Login with Google</button>
-                </div>
-            </form>
-            
-        </div>
+            </div>
         <!--End of card-->
-    </main>
-    <footer>
+            <div class="buttonRight">
+                <img src="./assets/icons/ChevronRightDark.svg" alt="Right Arrow">
+            </div>
+        </main>
+        <footer class="item-e">
 
-    </footer>
+        </footer>
+        </div>
     </div>
 </body>
 </html>

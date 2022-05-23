@@ -11,6 +11,41 @@
     top: 30px;
 }
 /*Log in screen view*/
+
+/*Grid Layout*/
+/*.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, [row] auto);
+    gap: 10px;
+    
+}
+
+.item-a {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+}
+
+.item-b {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.item-c {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.item-d {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.item-e {
+    grid-column: 1 / span 3;
+    grid-row: 3;
+}*/
+
 .bg {
     display: flex;
     width: 100vw;
@@ -29,8 +64,8 @@
     flex-direction: column;
     align-items: center;
     padding: 40px 50px;
-
     position: absolute;
+
     max-width: 462px;
     max-height: 702px;
     left: 932px;
@@ -112,4 +147,22 @@
     font-size: 14px;
     line-height: 19px;
     color: #FFFFFF;
+}
+
+/*Carrousel*/
+
+.buttonLeft {
+    position: absolute;
+    width: 43px;
+    height: 43px;
+    left: 32px;
+    top: 509px;
+}
+
+.buttonRight {
+    position: absolute;
+    width: 43px;
+    height: 43px;
+    left: 1420px;
+    top: 509px;
 }
