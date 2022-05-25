@@ -1,122 +1,107 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .logo {
-    position: absolute;
     width: 322px;
     height: 66px;
-    left: 39px;
-    top: 30px;
+    margin-left: 39px;
+    margin-top: 30px;
 }
 /*Log in screen view*/
 
-/*Grid Layout*/
-/*.container {
+.logIn-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1;
     grid-template-rows: repeat(3, [row] auto);
     gap: 10px;
-    
-}
-
-.item-a {
-    grid-column: 1 / span 3;
-    grid-row: 1;
-}
-
-.item-b {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.item-c {
-    grid-column: 2;
-    grid-row: 3;
-}
-
-.item-d {
-    grid-column: 3;
-    grid-row: 2;
-}
-
-.item-e {
-    grid-column: 1 / span 3;
-    grid-row: 3;
-}*/
-
-.bg {
-    display: flex;
     width: 100vw;
     height: 100vh;
-    left: 0px;
-    top: 0px;
+    
     background-size: cover;
     background: url(../assets/images/Black1.jpg), #C4C4C4;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
+.logIn-header {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.logIn-main {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.logIn-footer {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.container-bigBox {
+    flex-grow: 10;
+    display: flex;
+    justify-content: flex-end;
+}
+
 /* Log in card */
-.big-box {
+.bigBox {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+
     padding: 40px 50px;
-    position: absolute;
-
     max-width: 462px;
-    max-height: 702px;
-    left: 932px;
-    top: 178px;
+    height: 702px;
 
-    background: #303030;
+    background: rgba(0, 0, 0, 0.5);
     background-blend-mode: overlay;
-    backdrop-filter: blur(10px);
-
     border-radius: 12px;
 }
 
-.big-box__title {
+.bigBox__title {
     margin-bottom: 10px;
 }
 
-.big-box__info {
+.bigBox__info {
     margin-bottom: 32px;
 }
 
-.buttonSocialmedia {
+.button {
     margin: 12px 0px;
     font-family:'Exo', sans-serif;
     font-size: 18px;
     font-weight: 700;
-    background-color: none;
+    color: #FFFFFF;
 
     width: 362px;
     height: 47px;
 
-    border: 2px solid #FFFFFF;
     border-radius: 6px;
+    cursor: pointer;
+}
+
+.buttonSocialmedia {
+    @extend .button;
+
+    background: none;
+    border: 2px solid #FFFFFF;
+
 }
 
 .buttonLogIn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 17px 13px 18px 12px;
-
-    font-family: 'Exo';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 24px;
-    color: #FFFFFF;
-    
-    width: 362px;
-    height: 47px;
-    background: #4CC986;
-    border-radius: 6px;
+    @extend .button;
+    background-color:#4cc986;
+    border: 0px;
 }
 
 .logIn-input {
@@ -140,6 +125,10 @@
     justify-content: space-between;
 }
 
+.psw-box > *{
+    flex: 1;
+}
+
 .label-checkbox {
     font-family: 'Exo';
     font-style: normal;
@@ -151,18 +140,8 @@
 
 /*Carrousel*/
 
-.buttonLeft {
-    position: absolute;
-    width: 43px;
-    height: 43px;
-    left: 32px;
-    top: 509px;
-}
-
-.buttonRight {
-    position: absolute;
-    width: 43px;
-    height: 43px;
-    left: 1420px;
-    top: 509px;
+.buttonCarrousel {
+    flex-grow: 1;
+    margin-bottom: 130px;
+    height: 44px;
 }
