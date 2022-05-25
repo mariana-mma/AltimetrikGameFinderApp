@@ -1,126 +1,128 @@
+/*colors*/
 body {
   font-family: "Exo", sans-serif;
 }
 
 /*Log in screen*/
-.big-box h2 {
-  color: #FFFFFF;
+.bigBox h2, .bigBox p, .bigBox span, .bigBox div {
+  color: #ffffff;
 }
-.big-box p {
-  color: #FFFFFF;
+.bigBox a {
+  color: #5FE19B;
+  text-decoration: none;
 }
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .logo {
-  position: absolute;
   width: 322px;
   height: 66px;
-  left: 39px;
-  top: 30px;
+  margin-left: 39px;
+  margin-top: 30px;
 }
 
 /*Log in screen view*/
-/*Grid Layout*/
-/*.container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, [row] auto);
-    gap: 10px;
-
-}
-
-.item-a {
-    grid-column: 1 / span 3;
-    grid-row: 1;
-}
-
-.item-b {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.item-c {
-    grid-column: 2;
-    grid-row: 3;
-}
-
-.item-d {
-    grid-column: 3;
-    grid-row: 2;
-}
-
-.item-e {
-    grid-column: 1 / span 3;
-    grid-row: 3;
-}*/
-.bg {
-  display: flex;
+.logIn-container {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: repeat(3, [row] auto);
+  gap: 10px;
   width: 100vw;
   height: 100vh;
-  left: 0px;
-  top: 0px;
   background-size: cover;
-  background: url(../assets/images/Black1.jpg), #C4C4C4;
+  background: url(../assets/images/Black1.jpg), #c4c4c4;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
-/* Log in card */
-.big-box {
+.logIn-header {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.logIn-main {
+  grid-column: 1;
+  grid-row: 2;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  padding: 40px 50px;
-  position: absolute;
-  max-width: 462px;
-  max-height: 702px;
-  left: 932px;
-  top: 178px;
-  background: #303030;
-  background-blend-mode: overlay;
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
+  gap: 25px;
 }
 
-.big-box__title {
-  margin-bottom: 10px;
-}
-
-.big-box__info {
-  margin-bottom: 32px;
-}
-
-.buttonSocialmedia {
-  margin: 12px 0px;
-  font-family: "Exo", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  background-color: none;
-  width: 362px;
-  height: 47px;
-  border: 2px solid #FFFFFF;
-  border-radius: 6px;
-}
-
-.buttonLogIn {
+.logIn-footer {
+  grid-column: 1;
+  grid-row: 3;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 17px 13px 18px 12px;
-  font-family: "Exo";
-  font-style: normal;
-  font-weight: 700;
+}
+
+.container-bigBox {
+  flex-grow: 10;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Log in card */
+.bigBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 50px;
+  max-width: 462px;
+  height: 702px;
+  background: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+  border-radius: 12px;
+}
+.bigBox h2 {
+  margin-bottom: 10px;
+}
+.bigBox p {
+  margin-bottom: 32px;
+}
+
+.button, .buttonLogIn, .buttonSocialmedia {
+  font-family: "Exo", sans-serif;
   font-size: 18px;
-  line-height: 24px;
-  color: #FFFFFF;
+  font-weight: 700;
+  color: #ffffff;
   width: 362px;
   height: 47px;
-  background: #4CC986;
   border-radius: 6px;
+  cursor: pointer;
+}
+
+.buttonSocialmedia {
+  background: none;
+  border: 2px solid #ffffff;
+  margin: 19px 0px;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buttonSocialmedia svg {
+  margin-right: 12px;
+}
+.buttonSocialmedia:hover {
+  opacity: 0.7;
+}
+
+.buttonLogIn {
+  background-color: #4cc986;
+  border: 0px;
+  margin-bottom: 32px;
+}
+.buttonLogIn:hover {
+  background-color: #5FE19B;
 }
 
 .logIn-input {
@@ -133,39 +135,115 @@ body {
   font-size: 15px;
   font-weight: 400;
   line-height: 20px;
-  background: #FFFFFF;
+  background: #ffffff;
+  border-radius: 4px;
+  border: 0px;
+}
+
+.psw-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pswEye {
+  position: absolute;
+  display: inline-block;
+  align-self: flex-end;
+  margin-top: 12px;
+  margin-right: 9.16px;
+}
+
+.pswRememberBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 25px;
+}
+
+.psw-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+.psw-checkbox + .psw-label {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+}
+.psw-checkbox + .psw-label::before {
+  content: "";
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: text-top;
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: 1.5px solid #ffffff;
   border-radius: 4px;
 }
-
-.psw-box {
-  display: flex;
-  justify-content: space-between;
+.psw-checkbox:checked + .psw-label::before {
+  background: #36b972;
+}
+.psw-checkbox:checked + .psw-label::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 9px;
+  background: #ffffff;
+  width: 2px;
+  height: 2px;
+  box-shadow: 2px 0 0 #ffffff, 4px 0 0 #ffffff, 4px -2px 0 #ffffff, 4px -4px 0 #ffffff, 4px -6px 0 #ffffff, 4px -8px 0 #ffffff;
+  transform: rotate(45deg);
 }
 
-.label-checkbox {
+.psw-label:hover::before {
+  background: #36b972;
+}
+
+.psw-label {
   font-family: "Exo";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
-  color: #FFFFFF;
+  color: #ffffff;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  opacity: 0.5;
+  height: 19px;
+  margin-top: 25px;
+  margin-bottom: 29px;
+}
+.separator::before {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ffffff;
+}
+.separator::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ffffff;
+}
+.separator:not(:empty)::before {
+  margin-right: 19px;
+}
+.separator:not(:empty)::after {
+  margin-left: 19px;
 }
 
 /*Carrousel*/
-.buttonLeft {
-  position: absolute;
-  width: 43px;
-  height: 43px;
-  left: 32px;
-  top: 509px;
+.buttonCarrousel {
+  flex-grow: 1;
+  margin-bottom: 90px;
+  height: 44px;
+  cursor: pointer;
 }
-
-.buttonRight {
-  position: absolute;
-  width: 43px;
-  height: 43px;
-  left: 1420px;
-  top: 509px;
+.buttonCarrousel:hover {
+  opacity: 0.7;
 }
 
 /*# sourceMappingURL=style.css.map */

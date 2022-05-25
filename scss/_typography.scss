@@ -4,14 +4,15 @@ body {
 
 /*Log in screen*/
 
-.big-box {
-    h2 {
-        color: #FFFFFF;
+.bigBox {
+    h2, p, span, div {
+        color: $snow-white;
     }
-    
-    p {
-        color: #FFFFFF;
-    } 
+
+    a {
+        color: $mint-green;
+        text-decoration: none;
+    }
 }
 
 
