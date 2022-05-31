@@ -5,10 +5,14 @@ body {
 /*Log in screen*/
 
 .bigBox {
-    h2, p, span {
-        color: #FFFFFF;
+    h2, p, span, div {
+        color: $snow-white;
     }
 
+    a {
+        color: $mint-green;
+        text-decoration: none;
+    }
 }
 
 

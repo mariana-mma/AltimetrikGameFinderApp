@@ -10,6 +10,7 @@
     margin-left: 39px;
     margin-top: 30px;
 }
+
 /*Log in screen view*/
 
 .logIn-container {
@@ -21,7 +22,7 @@
     height: 100vh;
     
     background-size: cover;
-    background: url(../assets/images/Black1.jpg), #C4C4C4;
+    background: url(../assets/images/Black1.jpg), $pewter-grey;
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -44,6 +45,9 @@
 .logIn-footer {
     grid-column: 1;
     grid-row: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container-bigBox {
@@ -66,22 +70,21 @@
     background: rgba(0, 0, 0, 0.5);
     background-blend-mode: overlay;
     border-radius: 12px;
-}
 
-.bigBox__title {
-    margin-bottom: 10px;
-}
+    h2 {
+        margin-bottom: 10px;
+    }
 
-.bigBox__info {
-    margin-bottom: 32px;
+    p {
+        margin-bottom: 32px;
+    }
 }
 
 .button {
-    margin: 12px 0px;
     font-family:'Exo', sans-serif;
     font-size: 18px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: $snow-white;
 
     width: 362px;
     height: 47px;
@@ -94,14 +97,32 @@
     @extend .button;
 
     background: none;
-    border: 2px solid #FFFFFF;
+    border: 2px solid $snow-white;
+    margin: 19px 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    svg {
+        margin-right: 12px;
+    }
+
+    &:hover {
+        opacity: 0.7;
+    }
 }
 
 .buttonLogIn {
     @extend .button;
     background-color:#4cc986;
     border: 0px;
+    margin-bottom: 32px;
+
+    &:hover {
+        background-color: $mint-green;
+    }
 }
 
 .logIn-input {
@@ -116,32 +137,132 @@
     font-weight: 400;
     line-height: 20px;
     
-    background: #FFFFFF;
+    background: $snow-white;
     border-radius: 4px;
+    border: 0px;
     }
 
-.psw-box {
+.psw-input {
+    width: 100%;
     display: flex;
+    flex-direction: column;
+}
+
+.pswEye {
+    position: absolute;
+    display:inline-block;
+    align-self: flex-end;
+    margin-top: 12px;
+    margin-right: 9.16px;
+}
+
+.pswRememberBox {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    padding-bottom: 25px;
 }
 
-.psw-box > *{
-    flex: 1;
+.psw-checkbox {
+    position: absolute;
+    opacity: 0;
+
+    & + .psw-label {
+        position: relative;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    & + .psw-label::before {
+        content: '';
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align: text-top;
+        width: 20px;
+        height: 20px;
+        background: none;
+        border: 1.5px solid $snow-white;
+        border-radius: 4px;
+    }
+
+    &:checked + .psw-label::before {
+        background: $jaded-green;
+    }
+
+    &:checked + .psw-label::after {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 9px;
+        background: $snow-white;
+        width: 2px;
+        height: 2px;
+        box-shadow: 
+        2px 0 0 $snow-white,
+        4px 0 0 $snow-white,
+        4px -2px 0 $snow-white,
+        4px -4px 0 $snow-white,
+        4px -6px 0 $snow-white,
+        4px -8px 0 $snow-white;
+        transform: rotate(45deg);
+    }
 }
 
-.label-checkbox {
+.psw-label:hover::before {
+    background: $jaded-green;
+}
+
+.psw-label {
     font-family: 'Exo';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
-    color: #FFFFFF;
+    color: $snow-white;
 }
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    opacity: 0.5;
+    height: 19px;
+    margin-top: 25px;
+    margin-bottom: 29px;
+
+    &::before {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid $snow-white;
+
+    }
+
+    &::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid $snow-white;
+
+    }
+
+    &:not(:empty)::before {
+        margin-right: 19px;
+    }
+
+    &:not(:empty)::after {
+        margin-left: 19px;
+    }
+}
+
 
 /*Carrousel*/
 
 .buttonCarrousel {
     flex-grow: 1;
-    margin-bottom: 130px;
+    margin-bottom: 90px;
     height: 44px;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.7;
+    }
 }
