@@ -12,6 +12,30 @@ body {
   text-decoration: none;
 }
 
+/*Homepage screen*/
+.homepage {
+  color: #ffffff;
+}
+
+.cardTitle h3 {
+  font-weight: 700;
+  font-size: 24px;
+}
+.cardTitle h5 {
+  color: #36b972;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.cardInfo p {
+  font-weight: 500;
+  font-size: 14px;
+}
+.cardInfo span {
+  color: #939393;
+  font-weight: 400;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -244,6 +268,56 @@ body {
 }
 .buttonCarrousel:hover {
   opacity: 0.7;
+}
+
+/*Homepage screen view*/
+.homepage {
+  background-color: #141414;
+  width: 100vw;
+  height: 100vh;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(288px, 363px));
+  gap: 24px;
+}
+
+/*Card design*/
+.gameCard {
+  background-color: #303030;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  min-height: 314px;
+  max-height: 332px;
+  max-width: 363px;
+  min-width: 288px;
+}
+.gameCard article {
+  box-sizing: border-box;
+  padding: 16px 16px 16px 18px;
+}
+
+.cardTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 11px;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.cardInfo p {
+  padding: 4px 0px;
+}
+.cardInfo svg {
+  margin: 5px 16px 5px 0px;
 }
 
 /*# sourceMappingURL=style.css.map */
