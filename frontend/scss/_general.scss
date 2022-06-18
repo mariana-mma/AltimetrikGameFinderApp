@@ -537,6 +537,12 @@
     max-width: 363px;
     min-width: 288px;
 
+    img {
+        height: 179px;
+        object-fit: cover;
+        border-radius: 12px 12px 0px 0px;
+    }
+
     article {
         box-sizing: border-box;
         padding: 16px 16px 16px 18px;
