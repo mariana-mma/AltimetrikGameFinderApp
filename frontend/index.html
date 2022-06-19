@@ -22,7 +22,7 @@
             <img class="logo" src="./assets/images/White.png" alt="GAMEFINDER Logo">
         </header>
         <main class="logIn-main">
-            <svg class="buttonCarrousel" width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="buttonCarousel" width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle opacity="0.8" cx="21.5" cy="21.5" r="21.5" fill="#515151"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M25.9425 10.724C26.1925 10.974 26.3329 11.3131 26.3329 11.6667C26.3329 12.0202 26.1925 12.3593 25.9425 12.6093L17.5519 21L25.9425 29.3907C26.1854 29.6421 26.3198 29.9789 26.3168 30.3285C26.3137 30.6781 26.1735 31.0125 25.9263 31.2598C25.6791 31.507 25.3447 31.6472 24.9951 31.6502C24.6455 31.6533 24.3087 31.5189 24.0572 31.276L14.7239 21.9427C14.4739 21.6926 14.3335 21.3536 14.3335 21C14.3335 20.6464 14.4739 20.3074 14.7239 20.0573L24.0572 10.724C24.3072 10.474 24.6463 10.3336 24.9999 10.3336C25.3534 10.3336 25.6925 10.474 25.9425 10.724Z" fill="white"/>
             </svg>
@@ -31,20 +31,22 @@
                 <div class="bigBox">
                     <h2>Welcome! Log in or register</h2>
                     <p>Log in to find the games you're looking for!</p>
-                <form>
-                    <input class="logIn-input" type="email" placeholder="Email" required>
+                <form id="login">
+                    <input id="email" class="logIn-input" name="email" type="email" placeholder="Email">
+                    <small class="error-messageOne"></small>
                     <div class="psw-input">
-                        <input class="logIn-input" type="password" placeholder="Password" required>
+                        <input id="password" class="logIn-input" name="password" type="password" placeholder="Password">
                         <svg class="pswEye" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M6.30105 15.577C4.77805 14.268 3.69105 12.773 3.18005 12C3.69005 11.227 4.77805 9.732 6.30105 8.423C7.87405 7.072 9.81605 6 12.0001 6C14.1841 6 16.1261 7.072 17.6991 8.423C19.2221 9.732 20.3091 11.227 20.8201 12C20.3101 12.773 19.2221 14.268 17.6991 15.577C16.1261 16.928 14.1841 18 12.0001 18C9.81605 18 7.87405 16.928 6.30105 15.577ZM12.0001 4C9.14805 4 6.75705 5.395 4.99805 6.906C3.23305 8.423 2.00805 10.138 1.46405 10.97C1.26309 11.2759 1.15601 11.634 1.15601 12C1.15601 12.366 1.26309 12.7241 1.46405 13.03C2.00805 13.862 3.23305 15.577 4.99805 17.094C6.75805 18.605 9.14805 20 12.0001 20C14.8521 20 17.2431 18.605 19.0021 17.094C20.7671 15.577 21.9921 13.862 22.5361 13.03C22.9471 12.402 22.9471 11.599 22.5361 10.97C21.9921 10.138 20.7671 8.423 19.0021 6.906C17.2421 5.395 14.8521 4 12.0001 4ZM10.0001 12C10.0001 11.4696 10.2108 10.9609 10.5858 10.5858C10.9609 10.2107 11.4696 10 12.0001 10C12.5305 10 13.0392 10.2107 13.4143 10.5858C13.7893 10.9609 14.0001 11.4696 14.0001 12C14.0001 12.5304 13.7893 13.0391 13.4143 13.4142C13.0392 13.7893 12.5305 14 12.0001 14C11.4696 14 10.9609 13.7893 10.5858 13.4142C10.2108 13.0391 10.0001 12.5304 10.0001 12ZM12.0001 8C10.9392 8 9.92177 8.42143 9.17163 9.17157C8.42148 9.92172 8.00005 10.9391 8.00005 12C8.00005 13.0609 8.42148 14.0783 9.17163 14.8284C9.92177 15.5786 10.9392 16 12.0001 16C13.0609 16 14.0783 15.5786 14.8285 14.8284C15.5786 14.0783 16.0001 13.0609 16.0001 12C16.0001 10.9391 15.5786 9.92172 14.8285 9.17157C14.0783 8.42143 13.0609 8 12.0001 8Z" fill="#36B972"/>
                         </svg>
+                        <small class="error-messageTwo"></small>
                     </div>
                     <div class="pswRememberBox">
                         <input class="psw-checkbox" type="checkbox" id="remember">
                         <label class="psw-label" for="remember">Remember me</label>
                         <a href="#">Forgot password?</a>
                     </div>
-                        <button class="buttonLogIn" type="submit">Log in</button>
+                        <button class="buttonLogIn" type="submit" value="Log In">Log in</button>
                     <div>
                         <span>Not registered yet? <a href="#"> Register now</a></span>
                     </div>
@@ -67,7 +69,7 @@
                 </div>
             </div>
         <!--End of card-->
-            <svg class="buttonCarrousel" width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="buttonCarousel" width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle opacity="0.8" cx="21.5" cy="21.5" r="21.5" transform="rotate(-180 21.5 21.5)" fill="#515151"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.0575 32.276C16.8075 32.026 16.6671 31.6869 16.6671 31.3333C16.6671 30.9798 16.8075 30.6407 17.0575 30.3907L25.4481 22L17.0575 13.6093C16.8146 13.3579 16.6802 13.0211 16.6832 12.6715C16.6863 12.3219 16.8265 11.9875 17.0737 11.7402C17.3209 11.493 17.6553 11.3528 18.0049 11.3498C18.3545 11.3467 18.6913 11.4811 18.9428 11.724L28.2761 21.0573C28.5261 21.3074 28.6665 21.6464 28.6665 22C28.6665 22.3536 28.5261 22.6926 28.2761 22.9427L18.9428 32.276C18.6928 32.526 18.3537 32.6664 18.0001 32.6664C17.6466 32.6664 17.3075 32.526 17.0575 32.276Z" fill="white"/>
             </svg>
@@ -82,7 +84,10 @@
                 <circle opacity="0.25" cx="84.5" cy="13.5" r="3.5" fill="white"/>
                 <circle opacity="0.25" cx="100.5" cy="13.5" r="3.5" fill="white"/>
             </svg>
+            <!--Snackbar-->
+            <div id="snackbar">Some text some message..</div>
         </footer>
     </div>
+    <script src="./js/validation.js"></script>
 </body>
 </html>

@@ -12,6 +12,11 @@ body {
   text-decoration: none;
 }
 
+.error-messageOne, .error-messageTwo {
+  color: #fb5f5f;
+  font-size: 14px;
+}
+
 /*Homepage screen*/
 .homepage {
   color: #ffffff;
@@ -210,7 +215,7 @@ body {
   box-sizing: border-box;
   width: 362px;
   height: 47px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   padding: 16px 10.6px 16px 10.6px;
   font-family: "Exo", sans-serif;
   font-size: 15px;
@@ -219,6 +224,14 @@ body {
   background: #ffffff;
   border-radius: 4px;
   border: 0px;
+}
+
+.error {
+  border: 3px solid #fb5f5f;
+}
+
+.success {
+  border: 3px solid #36b972;
 }
 
 .psw-input {
@@ -316,14 +329,57 @@ body {
   margin-left: 19px;
 }
 
-/*Carrousel*/
-.buttonCarrousel {
+/*Snackbar*/
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #303030;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible;
+  /* Show the snackbar */
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+/*Carousel*/
+.buttonCarousel {
   flex-grow: 1;
   margin-bottom: 90px;
   height: 44px;
   cursor: pointer;
 }
-.buttonCarrousel:hover {
+.buttonCarousel:hover {
   opacity: 0.7;
 }
 
@@ -342,8 +398,6 @@ body {
 
 .header-container {
   padding: 0px 40px 0px 27px;
-  /*position: sticky;
-  top: auto;*/
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -481,8 +535,6 @@ body {
 
 /*Nav section*/
 .nav-container {
-  /*position: sticky;
-  top: auto;*/
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -531,6 +583,11 @@ body {
   max-width: 363px;
   min-width: 288px;
 }
+.gameCard img {
+  height: 179px;
+  object-fit: cover;
+  border-radius: 12px 12px 0px 0px;
+}
 .gameCard article {
   box-sizing: border-box;
   padding: 16px 16px 16px 18px;
@@ -549,6 +606,9 @@ body {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+.cardInfo div {
+  max-width: 200px;
 }
 .cardInfo p {
   padding: 4px 0px;
