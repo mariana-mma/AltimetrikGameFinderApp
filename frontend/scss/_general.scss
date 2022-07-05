@@ -377,8 +377,6 @@
 /*New and trending section*/
 
 .title-container {
-    /*position: sticky;
-    top: auto;*/
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -514,6 +512,8 @@
 
 /*Card design*/
 
+/*Three columns*/
+
 .cards-container {
     padding-right: 40px;
     padding-left: 33px;
@@ -521,55 +521,127 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(288px, 363px));
     gap: 24px;
+
+    .gameCard {
+        background-color: $charcoal-grey;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        min-height: 314px;
+        max-height: 332px;
+        max-width: 363px;
+        min-width: 288px;
+    
+        img {
+            height: 179px;
+            object-fit: cover;
+            border-radius: 12px 12px 0px 0px;
+        }
+    
+        article {
+            box-sizing: border-box;
+            padding: 16px 16px 16px 18px;
+        }
+    }
+
+    .cardTitle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        padding-bottom: 11px;
+    }
+
+    .cardInfo {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    
+        div {
+            max-width: 200px;
+        }
+    
+        p {
+            padding: 4px 0px;
+        }
+    
+        svg {
+            margin: 16px 5px 0px 5px;
+        }
+    }
+
 }
 
-.gameCard {
-    background-color: $charcoal-grey;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    min-height: 314px;
-    max-height: 332px;
-    max-width: 363px;
-    min-width: 288px;
 
-    img {
-        height: 179px;
-        object-fit: cover;
-        border-radius: 12px 12px 0px 0px;
+
+/*One column*/
+
+.cards-container--oneColumn {
+    padding-right: 252px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(697px, 1fr));
+    gap: 24px;
+
+    .gameCard {
+        background-color: $charcoal-grey;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        height: 538px;
+        width: 697px;
+    
+        img {
+            height: 315px;
+            object-fit: cover;
+            border-radius: 12px 12px 0px 0px;
+        }
+    
+        article {
+            box-sizing: border-box;
+            padding: 16px 16px 16px 18px;
+        }
     }
 
-    article {
-        box-sizing: border-box;
-        padding: 16px 16px 16px 18px;
+    .cardTitle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        padding-bottom: 11px;
     }
+
+    .cardInfo {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    
+        p {
+            padding: 4px 20px 4px 0px;
+            display: inline-block;
+        }
+    
+        svg {
+            margin: 0px 5px 0px 5px;
+        }
+    
+    }
+
+    .cardDescription {
+        height: 90px;
+    
+        p {
+            height: 85px;
+            overflow: auto;
+        }
+    }
+
 }
 
-.cardTitle {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-    padding-bottom: 11px;
-}
-
-.cardInfo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    div {
-        max-width: 200px;
-    }
-
-    p {
-        padding: 4px 0px;
-    }
-
-    svg {
-        margin: 16px 5px 0px 5px;
-    }
+.hidden {
+    display: none;
 }
 
 /*Footer*/

@@ -79,23 +79,57 @@ body {
   line-height: 23.92px;
 }
 
-.cardTitle h3 {
+/*Three columns*/
+.cards-container .cardTitle h3 {
+  width: 280px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-weight: 700;
   font-size: 24px;
 }
-.cardTitle h5 {
+.cards-container .cardTitle h5 {
   color: #36b972;
   font-weight: 700;
   font-size: 18px;
 }
-
-.cardInfo p {
+.cards-container .cardInfo p {
   font-weight: 500;
   font-size: 14px;
 }
-.cardInfo span {
+.cards-container .cardInfo span {
   color: #939393;
   font-weight: 400;
+}
+
+/*One Column*/
+.cards-container--oneColumn .cardTitle h3 {
+  width: 490px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: 32px;
+}
+.cards-container--oneColumn .cardTitle h5 {
+  color: #36b972;
+  font-weight: 700;
+  font-size: 24px;
+}
+.cards-container--oneColumn .cardInfo p {
+  font-weight: 500;
+  font-size: 14px;
+}
+.cards-container--oneColumn .cardInfo span {
+  color: #939393;
+  font-weight: 400;
+}
+.cards-container--oneColumn .cardDescription {
+  font-weight: 500;
+  font-size: 14px;
+  padding-top: 18px;
 }
 
 * {
@@ -443,8 +477,6 @@ body {
 
 /*New and trending section*/
 .title-container {
-  /*position: sticky;
-  top: auto;*/
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -564,6 +596,7 @@ body {
 }
 
 /*Card design*/
+/*Three columns*/
 .cards-container {
   padding-right: 40px;
   padding-left: 33px;
@@ -572,8 +605,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(288px, 363px));
   gap: 24px;
 }
-
-.gameCard {
+.cards-container .gameCard {
   background-color: #303030;
   border-radius: 12px;
   display: flex;
@@ -583,38 +615,93 @@ body {
   max-width: 363px;
   min-width: 288px;
 }
-.gameCard img {
+.cards-container .gameCard img {
   height: 179px;
   object-fit: cover;
   border-radius: 12px 12px 0px 0px;
 }
-.gameCard article {
+.cards-container .gameCard article {
   box-sizing: border-box;
   padding: 16px 16px 16px 18px;
 }
-
-.cardTitle {
+.cards-container .cardTitle {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
   padding-bottom: 11px;
 }
-
-.cardInfo {
+.cards-container .cardInfo {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.cardInfo div {
+.cards-container .cardInfo div {
   max-width: 200px;
 }
-.cardInfo p {
+.cards-container .cardInfo p {
   padding: 4px 0px;
 }
-.cardInfo svg {
+.cards-container .cardInfo svg {
   margin: 16px 5px 0px 5px;
+}
+
+/*One column*/
+.cards-container--oneColumn {
+  padding-right: 252px;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(697px, 1fr));
+  gap: 24px;
+}
+.cards-container--oneColumn .gameCard {
+  background-color: #303030;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 538px;
+  width: 697px;
+}
+.cards-container--oneColumn .gameCard img {
+  height: 315px;
+  object-fit: cover;
+  border-radius: 12px 12px 0px 0px;
+}
+.cards-container--oneColumn .gameCard article {
+  box-sizing: border-box;
+  padding: 16px 16px 16px 18px;
+}
+.cards-container--oneColumn .cardTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 11px;
+}
+.cards-container--oneColumn .cardInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.cards-container--oneColumn .cardInfo p {
+  padding: 4px 20px 4px 0px;
+  display: inline-block;
+}
+.cards-container--oneColumn .cardInfo svg {
+  margin: 0px 5px 0px 5px;
+}
+.cards-container--oneColumn .cardDescription {
+  height: 90px;
+}
+.cards-container--oneColumn .cardDescription p {
+  height: 85px;
+  overflow: auto;
+}
+
+.hidden {
+  display: none;
 }
 
 /*Footer*/
