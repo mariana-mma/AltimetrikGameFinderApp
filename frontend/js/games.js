@@ -1,6 +1,8 @@
+const cardsSection = document.getElementById("cardsContainer");
+
+
 // Call game API with fetch
 const api_url = "https://rawg.io/api/games?key=be591b53b20846a1badbf93b73218da7&dates=2019-09-01,2019-09-30&platforms=18,1,7&page_size=40";
-const container = document.querySelector(".cards-container");
 
 
 const getGames = async() => {
@@ -38,15 +40,15 @@ function renderGenres(genres){
 
 function createCard(game, ranking) {
 
-    container.innerHTML += `
-    <div class="gameCard">
-    <img src=${game.background_image}>
-        <article>
-            <div class="cardTitle">
+    cardsSection.innerHTML += `
+    <div id="gamesCard" class="gameCard">
+    <img src=${game.background_image} alt="This is a visual representation of ${game.name}">
+        <article id="aCard">
+            <div id="gameTitle" class="cardTitle">
                 <h3>${game.name}</h3>
                 <h5>#${ranking}</h5>
             </div>
-            <div class="cardInfo">
+            <div id="gameInfo" class="cardInfo">
                 <div>
                     <p><span>Release date:</span>${game.released}</p>
                     <p><span>Genres:</span> ${renderGenres(game.genres)}</p>
@@ -54,6 +56,9 @@ function createCard(game, ranking) {
                 <div>
                     ${platformGame(game.parent_platforms)}
                 </div>
+            </div>
+            <div id="gameDescription" class="cardDescription hidden">
+                <p>Games description goes over here: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
         </article>
     </div>
@@ -106,3 +111,50 @@ var nintendoSvg = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" x
 var pcSvg = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M20 9.16667H9.16667V1.53647L20 0V9.16667ZM8.33333 1.66667V9.16667H0V2.77865L8.33333 1.66667ZM8.33333 10H0V17.0992L8.33333 18.3333V10ZM9.16667 18.3262V10H20V20L9.16667 18.3262Z" fill="#FFFFFF"/>
 </svg>`;
+
+
+function oneColumn(){
+    const cardsSection = document.getElementById("cardsContainer");
+    const showDescription = document.getElementById("gameDescription");
+
+    cardsSection.classList.remove("cards-container");
+    cardsSection.classList.add("cards-container--oneColumn");
+
+    showDescription.classList.remove("hidden");
+
+};
+
+
+/*function addDescription(){
+    const article = document.getElementById("aCard");
+    const divP = document.createElement("div");
+
+    divP.setAttribute("class","cardDescription");
+
+    const gameDescription = document.createElement("p");
+    gameDescription.innerText +=`Games description goes over here: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
+    
+    article.append(divP);
+    divP.append(gameDescription);
+};*/
+
+/*function cardsOneColumn(){
+    for (let i=0; i < data.results.length; i++){
+        oneColumn();
+        addDescription();
+
+    }
+};
+*/
+
+
+function threeColumn(){
+    const cardsSection = document.getElementById("cardsContainer");
+    const showDescription = document.getElementById("gameDescription");
+
+    cardsSection.classList.remove("cards-container--oneColumn");
+    cardsSection.classList.add("cards-container");
+
+    showDescription.classList.add("hidden");
+
+};
