@@ -147,6 +147,13 @@ body {
     }
 
     .cardInfo {
+        .shortText{
+            width: 500px;
+            overflow: hidden;
+            display:inline-block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
         p{
             font-weight: 500;
             font-size: 14px;
@@ -160,7 +167,6 @@ body {
     .cardDescription {
         font-weight: 500;
         font-size: 14px;
-        padding-top: 18px;
     }
 }
 

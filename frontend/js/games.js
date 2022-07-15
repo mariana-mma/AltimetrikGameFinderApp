@@ -1,8 +1,10 @@
 const cardsSection = document.getElementById("cardsContainer");
+const base_url = 'https://rawg.io/api';
+const api_key = 'be591b53b20846a1badbf93b73218da7';
 
 
 // Call game API with fetch
-const api_url = "https://rawg.io/api/games?key=be591b53b20846a1badbf93b73218da7&dates=2019-09-01,2019-09-30&platforms=18,1,7&page_size=40";
+const api_url = `${base_url}/games?key=${api_key}`;
 
 
 const getGames = async() => {
@@ -11,23 +13,42 @@ const getGames = async() => {
         throw new Error('Cannot fetch the data');
     }
     const data = await response.json();
-    return data;
+    let info = data.results;
+    return info;
 };
 
 getGames()
-    .then(data => {
-        for (let i=0; i < data.results.length; i++){
-            createCard(data.results[i], i+1);
-        }
-    })
+    .then(
+        data => {getGamesInfo(data)
+        .then(response => createCard(response))})
     .catch(err =>  alert( err.message ));
 
+
+function getGamesInfo(gameInfo) {
+    const promises = [];
+    for (let index = 0; index < gameInfo.length; index++) {
+        const gameId = gameInfo[index].id;
+    
+        const games = fetch(
+        `${base_url}/games/${gameId}?key=${api_key}`
+        )
+        .then((res) => res.json())
+        .then((data) => {
+            const completeGameData = Object.assign(gameInfo[index], data);
+            return completeGameData;
+        });
+        promises.push(games);
+    }
+    return Promise.all(promises);
+};
+
+// card components
 function renderGenres(genres){
     let genreList = "";
     for (let i=0; i < genres.length; i++){
         let genre = genres[i];
         let genreName = genre.name;
-        if(i==(genres.length-1)){
+        if(i===(genres.length-1)){
             genreList+= genreName;
         }
         else{   
@@ -38,18 +59,23 @@ function renderGenres(genres){
 };
 
 
-function createCard(game, ranking) {
+function createCard(game) {
 
-    cardsSection.innerHTML += `
+    game.forEach(game => {
+        cardsSection.innerHTML += `
     <div id="gamesCard" class="gameCard">
-    <img src=${game.background_image} alt="This is a visual representation of ${game.name}">
+        <img src=${game.background_image} alt="This is a visual representation of ${game.name}">
+        <div class="heartButton">
+            <input type="checkbox" id="heart-like">
+            <label for="heart-like" id="heart">${heartSvg}</label>
+        </div>
         <article id="aCard">
             <div id="gameTitle" class="cardTitle">
                 <h3>${game.name}</h3>
-                <h5>#${ranking}</h5>
+                <h5>#</h5>
             </div>
             <div id="gameInfo" class="cardInfo">
-                <div>
+                <div class="shortText">
                     <p><span>Release date:</span>${game.released}</p>
                     <p><span>Genres:</span> ${renderGenres(game.genres)}</p>
                 </div>
@@ -57,12 +83,12 @@ function createCard(game, ranking) {
                     ${platformGame(game.parent_platforms)}
                 </div>
             </div>
-            <div id="gameDescription" class="cardDescription hidden">
-                <p>Games description goes over here: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div id="gameDescription" class="cardDescription hidden">${game.description}
             </div>
         </article>
     </div>
     `;
+    })
     };
 
 function platformGame(parent_platforms) {
@@ -90,6 +116,23 @@ function platformGame(parent_platforms) {
     return platformList;
 };
 
+var heartSvg = `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_912_1831)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.333 9.33342C10.4797 9.33342 8.99967 10.8174 8.99967 12.6228C8.99967 14.6548 10.1757 16.8228 11.9943 18.9468C13.5223 20.7294 15.3783 22.3374 16.9997 23.6348C18.621 22.3374 20.477 20.7281 22.005 18.9468C23.8237 16.8228 24.9997 14.6534 24.9997 12.6228C24.9997 10.8174 23.5197 9.33342 21.6663 9.33342C19.813 9.33342 18.333 10.8174 18.333 12.6228C18.333 12.9764 18.1925 13.3155 17.9425 13.5656C17.6924 13.8156 17.3533 13.9561 16.9997 13.9561C16.6461 13.9561 16.3069 13.8156 16.0569 13.5656C15.8068 13.3155 15.6663 12.9764 15.6663 12.6228C15.6663 10.8174 14.1863 9.33342 12.333 9.33342ZM16.9997 8.87875C16.4351 8.18642 15.7233 7.62865 14.916 7.24601C14.1088 6.86337 13.2264 6.66549 12.333 6.66675C9.03167 6.66675 6.33301 9.32009 6.33301 12.6228C6.33301 15.6241 8.02234 18.4094 9.96901 20.6814C11.9437 22.9868 14.365 24.9721 16.181 26.3854C16.4151 26.5675 16.7031 26.6663 16.9997 26.6663C17.2962 26.6663 17.5843 26.5675 17.8183 26.3854C19.6343 24.9721 22.0557 22.9854 24.0303 20.6814C25.977 18.4094 27.6663 15.6241 27.6663 12.6228C27.6663 9.32009 24.9677 6.66675 21.6663 6.66675C19.7863 6.66675 18.101 7.52809 16.9997 8.87875Z" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_d_912_1831" x="-5" y="-6" width="44" height="43.9985" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="3"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_912_1831"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_912_1831" result="shape"/>
+</filter>
+</defs>
+</svg>`;
 
 var playSvg = `<svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9.55164 9.53674e-06L9.55164 18.2774L13.3604 19.5885L13.3604 4.26319C13.3604 3.54103 13.6567 3.06155 14.132 3.22645C14.7534 3.41372 14.8742 4.07895 14.8742 4.79307L14.8742 10.9138C17.2449 12.1606 19.1114 10.9131 19.1114 7.62345C19.1114 4.26188 18.0171 2.76435 14.7972 1.56033C13.5271 1.10084 11.1734 0.325457 9.55164 9.53674e-06Z" fill="#FFFFFF"/>
@@ -113,48 +156,35 @@ var pcSvg = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="
 </svg>`;
 
 
+
+// set from three columns to one
+
+
 function oneColumn(){
     const cardsSection = document.getElementById("cardsContainer");
-    const showDescription = document.getElementById("gameDescription");
+    const showDescription = document.querySelectorAll("#gameDescription");
+    const descriptArr = Array.from(showDescription);
 
     cardsSection.classList.remove("cards-container");
     cardsSection.classList.add("cards-container--oneColumn");
 
-    showDescription.classList.remove("hidden");
-
-};
-
-
-/*function addDescription(){
-    const article = document.getElementById("aCard");
-    const divP = document.createElement("div");
-
-    divP.setAttribute("class","cardDescription");
-
-    const gameDescription = document.createElement("p");
-    gameDescription.innerText +=`Games description goes over here: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
-    
-    article.append(divP);
-    divP.append(gameDescription);
-};*/
-
-/*function cardsOneColumn(){
-    for (let i=0; i < data.results.length; i++){
-        oneColumn();
-        addDescription();
-
+    for (let i=0; i < descriptArr.length; i++) {
+        let eachDescript = descriptArr[i];
+        eachDescript.classList.remove("hidden");
     }
 };
-*/
 
 
 function threeColumn(){
     const cardsSection = document.getElementById("cardsContainer");
-    const showDescription = document.getElementById("gameDescription");
+    const showDescription = document.querySelectorAll("#gameDescription");
+    const descriptArr = Array.from(showDescription);
 
     cardsSection.classList.remove("cards-container--oneColumn");
     cardsSection.classList.add("cards-container");
 
-    showDescription.classList.add("hidden");
-
+    for (let i=0; i < descriptArr.length; i++) {
+        let eachDescript = descriptArr[i];
+        eachDescript.classList.add("hidden");
+    }
 };

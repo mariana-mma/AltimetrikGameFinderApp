@@ -544,6 +544,28 @@
         }
     }
 
+    .heartButton {
+        position: absolute;
+        display:inline-block;
+        align-self: flex-end;
+        margin-top: 8px;
+        margin-right: 8px;
+    
+        input {
+            position: absolute;
+            visibility: hidden;
+        }
+        
+        svg {
+            cursor: pointer;
+            
+        }
+    
+        svg:hover {
+            fill: $snow-white !important;
+        }
+    }
+
     .cardTitle {
         display: flex;
         flex-direction: row;
@@ -597,10 +619,33 @@
             object-fit: cover;
             border-radius: 12px 12px 0px 0px;
         }
-    
+
         article {
             box-sizing: border-box;
             padding: 16px 16px 16px 18px;
+        }
+    }
+
+    .heartButton {
+        position: absolute;
+        display:inline-block;
+        align-self: flex-end;
+        margin-top: 16px;
+        margin-right: 16px;
+    
+        input {
+            position: absolute;
+            visibility: hidden;
+        }
+        
+        svg {
+            cursor: pointer;
+            height: 40px;
+            width: 40px;
+        }
+    
+        svg:hover {
+            fill: $snow-white !important;
         }
     }
 
@@ -630,18 +675,21 @@
     }
 
     .cardDescription {
+        margin-top: 10px;
         height: 90px;
-    
-        p {
-            height: 85px;
-            overflow: auto;
-        }
+        overflow: auto;
     }
 
 }
 
 .hidden {
     display: none;
+}
+
+
+
+.liked {
+    fill: $snow-white;
 }
 
 /*Footer*/

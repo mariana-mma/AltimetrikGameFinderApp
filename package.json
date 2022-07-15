@@ -4,9 +4,12 @@
     "json-server-auth": "^2.1.0"
   },
   "dependencies": {
+    "concurrently": "^7.2.2",
     "cors": "^2.8.5"
   },
   "scripts": {
-    "json-server": "npx json-server-auth server/db.json"
+    "json-server": "npx json-server-auth server/db.json",
+    "sass": "sass --watch frontend/scss/style.scss frontend/css/style.css",
+    "start": "concurrently \"npm run json-server \" \"npm run sass \""
   }
 }

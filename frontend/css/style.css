@@ -118,6 +118,13 @@ body {
   font-weight: 700;
   font-size: 24px;
 }
+.cards-container--oneColumn .cardInfo .shortText {
+  width: 500px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .cards-container--oneColumn .cardInfo p {
   font-weight: 500;
   font-size: 14px;
@@ -129,7 +136,6 @@ body {
 .cards-container--oneColumn .cardDescription {
   font-weight: 500;
   font-size: 14px;
-  padding-top: 18px;
 }
 
 * {
@@ -624,6 +630,23 @@ body {
   box-sizing: border-box;
   padding: 16px 16px 16px 18px;
 }
+.cards-container .heartButton {
+  position: absolute;
+  display: inline-block;
+  align-self: flex-end;
+  margin-top: 8px;
+  margin-right: 8px;
+}
+.cards-container .heartButton input {
+  position: absolute;
+  visibility: hidden;
+}
+.cards-container .heartButton svg {
+  cursor: pointer;
+}
+.cards-container .heartButton svg:hover {
+  fill: #ffffff !important;
+}
 .cards-container .cardTitle {
   display: flex;
   flex-direction: row;
@@ -672,6 +695,25 @@ body {
   box-sizing: border-box;
   padding: 16px 16px 16px 18px;
 }
+.cards-container--oneColumn .heartButton {
+  position: absolute;
+  display: inline-block;
+  align-self: flex-end;
+  margin-top: 16px;
+  margin-right: 16px;
+}
+.cards-container--oneColumn .heartButton input {
+  position: absolute;
+  visibility: hidden;
+}
+.cards-container--oneColumn .heartButton svg {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+}
+.cards-container--oneColumn .heartButton svg:hover {
+  fill: #ffffff !important;
+}
 .cards-container--oneColumn .cardTitle {
   display: flex;
   flex-direction: row;
@@ -693,15 +735,17 @@ body {
   margin: 0px 5px 0px 5px;
 }
 .cards-container--oneColumn .cardDescription {
+  margin-top: 10px;
   height: 90px;
-}
-.cards-container--oneColumn .cardDescription p {
-  height: 85px;
   overflow: auto;
 }
 
 .hidden {
   display: none;
+}
+
+.liked {
+  fill: #ffffff;
 }
 
 /*Footer*/
