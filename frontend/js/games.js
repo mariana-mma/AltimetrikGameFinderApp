@@ -1,6 +1,31 @@
+//const { forEach } = require("json-server-auth");
+
 const cardsSection = document.getElementById("cardsContainer");
 const base_url = 'https://rawg.io/api';
 const api_key = 'be591b53b20846a1badbf93b73218da7';
+const searchBar = document.getElementById("search-input");
+
+let gameData = [];
+
+
+// Search functionality
+
+searchBar.addEventListener('keyup', (e) => {
+    const searchGame = e.target.value.toLowerCase();
+
+    const filteredGames = gameData.filter((game) => {
+        return (
+            game.name.toString().toLowerCase().includes(searchGame) ||
+            game.parent_platforms.some((gamePlatform) => gamePlatform.platform.name.toLowerCase().includes(searchGame))
+        );
+    });
+
+    if (searchGame.length <= 4) {
+        cardsSection.innerHTML = '';
+        createCard(filteredGames);
+    }
+
+});
 
 
 // Call game API with fetch
@@ -12,9 +37,9 @@ const getGames = async() => {
     if (response.status !==200){
         throw new Error('Cannot fetch the data');
     }
-    const data = await response.json();
-    let info = data.results;
-    return info;
+    const data = await response.json();  // define array of data outside of async function
+    gameData = data.results;
+    return gameData;
 };
 
 getGames()
@@ -42,7 +67,7 @@ function getGamesInfo(gameInfo) {
     return Promise.all(promises);
 };
 
-// card components
+// Card components
 function renderGenres(genres){
     let genreList = "";
     for (let i=0; i < genres.length; i++){
@@ -66,8 +91,7 @@ function createCard(game) {
     <div id="gamesCard" class="gameCard">
         <img src=${game.background_image} alt="This is a visual representation of ${game.name}">
         <div class="heartButton">
-            <input type="checkbox" id="heart-like">
-            <label for="heart-like" id="heart">${heartSvg}</label>
+            <button>${heartSvg}</button>
         </div>
         <article id="aCard">
             <div id="gameTitle" class="cardTitle">
@@ -155,10 +179,7 @@ var pcSvg = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="
 <path fill-rule="evenodd" clip-rule="evenodd" d="M20 9.16667H9.16667V1.53647L20 0V9.16667ZM8.33333 1.66667V9.16667H0V2.77865L8.33333 1.66667ZM8.33333 10H0V17.0992L8.33333 18.3333V10ZM9.16667 18.3262V10H20V20L9.16667 18.3262Z" fill="#FFFFFF"/>
 </svg>`;
 
-
-
-// set from three columns to one
-
+// Set to one or three columns
 
 function oneColumn(){
     const cardsSection = document.getElementById("cardsContainer");
@@ -174,8 +195,7 @@ function oneColumn(){
     }
 };
 
-
-function threeColumn(){
+function threeColumns(){
     const cardsSection = document.getElementById("cardsContainer");
     const showDescription = document.querySelectorAll("#gameDescription");
     const descriptArr = Array.from(showDescription);
@@ -188,3 +208,34 @@ function threeColumn(){
         eachDescript.classList.add("hidden");
     }
 };
+
+// Change button colors
+
+const btnThreeColumn = document.querySelector('#three-display');
+const btnOneColumn = document.querySelector('#one-display');
+
+btnThreeColumn.addEventListener('click', function() {
+
+    if (btnOneColumn.classList.contains('btnColorOn')){
+        btnOneColumn.classList.remove('btnColorOn')
+    }
+    this.classList.remove('btnColorOff');
+});
+
+btnOneColumn.addEventListener('click', function() {
+
+    if (!btnThreeColumn.classList.contains('btnColorOff')){
+        btnThreeColumn.classList.add('btnColorOff')
+    }
+    this.classList.toggle('btnColorOn');
+});
+
+// function gameConsole (parent_platforms) {
+//     let consoleList = "";
+//     for (let i=0; i < parent_platforms.length; i++){
+//         let platform = parent_platforms[i].platform;
+    
+//         let platformName = platform.name;
+//     }
+//     return consoleList;
+// };

@@ -35,6 +35,15 @@ body {
   color: #3D3D3D;
 }
 
+.search-options {
+  color: #3D3D3D;
+}
+.search-options li {
+  list-style: none;
+  font-size: 15px;
+  font-weight: 400;
+}
+
 .title-container h1 {
   font-size: 48px;
   font-weight: 800;
@@ -52,7 +61,6 @@ body {
   line-height: 19.94px;
 }
 
-/*REVIEW*/
 .nav-options {
   font-size: 20px;
   font-weight: 700;
@@ -468,6 +476,23 @@ body {
   margin-right: 8px;
 }
 
+.search-options {
+  margin-top: 8px;
+  padding: 0px 8px 0px 8px;
+  position: absolute;
+  background: #ffffff;
+  border-radius: 4px;
+  width: 362px;
+  max-height: 168px;
+}
+.search-options li {
+  padding: 10px 26px 10px 6px;
+  border-top: 1px solid #e7e7e7;
+}
+.search-options li:hover {
+  background: #f0f0f0;
+}
+
 .header-admin {
   display: flex;
   flex-direction: row;
@@ -564,6 +589,18 @@ body {
 .homepage-display button:hover svg {
   transform: scale(1.1);
 }
+.homepage-display .btnColorOn svg rect {
+  fill: #515151;
+}
+.homepage-display .btnColorOn svg path {
+  fill: #FFFDF5;
+}
+.homepage-display .btnColorOff svg rect {
+  fill: #303030;
+}
+.homepage-display .btnColorOff svg path {
+  fill: #515151;
+}
 
 /*Nav and card container*/
 .main-container {
@@ -637,15 +674,14 @@ body {
   margin-top: 8px;
   margin-right: 8px;
 }
-.cards-container .heartButton input {
-  position: absolute;
-  visibility: hidden;
+.cards-container .heartButton button {
+  height: 32px;
+  width: 32px;
+  border: none;
+  background: none;
 }
 .cards-container .heartButton svg {
   cursor: pointer;
-}
-.cards-container .heartButton svg:hover {
-  fill: #ffffff !important;
 }
 .cards-container .cardTitle {
   display: flex;
@@ -702,17 +738,16 @@ body {
   margin-top: 16px;
   margin-right: 16px;
 }
-.cards-container--oneColumn .heartButton input {
-  position: absolute;
-  visibility: hidden;
+.cards-container--oneColumn .heartButton button {
+  height: 40px;
+  width: 40px;
+  border: none;
+  background: none;
 }
 .cards-container--oneColumn .heartButton svg {
   cursor: pointer;
   height: 40px;
   width: 40px;
-}
-.cards-container--oneColumn .heartButton svg:hover {
-  fill: #ffffff !important;
 }
 .cards-container--oneColumn .cardTitle {
   display: flex;

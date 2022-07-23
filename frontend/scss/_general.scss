@@ -359,6 +359,23 @@
     }
 }
 
+.search-options {
+    margin-top: 8px;
+    padding: 0px 8px 0px 8px;
+    position: absolute;
+    background: $snow-white;
+    border-radius: 4px;
+    width: 362px;
+    max-height: 168px;
+    li {
+        padding: 10px 26px 10px 6px;
+        border-top: 1px solid $smoke-grey;
+    }
+    li:hover {
+        background: $mink-grey;
+    }
+}
+
 .header-admin {
     display: flex;
     flex-direction: row;
@@ -466,6 +483,28 @@
             }
         }
     }
+
+    .btnColorOn {
+        svg {
+            rect {
+                fill: $ashtray-grey;
+            }
+            path {
+                fill: #FFFDF5;
+            }
+        }
+    }
+
+    .btnColorOff {
+        svg {
+            rect {
+                fill: $charcoal-grey;
+            }
+            path {
+                fill: $ashtray-grey;
+            }
+        }
+    }
 }
 
 /*Nav and card container*/
@@ -550,19 +589,16 @@
         align-self: flex-end;
         margin-top: 8px;
         margin-right: 8px;
-    
-        input {
-            position: absolute;
-            visibility: hidden;
+
+        button {
+            height: 32px;
+            width: 32px;
+            border: none;
+            background: none;
         }
         
         svg {
             cursor: pointer;
-            
-        }
-    
-        svg:hover {
-            fill: $snow-white !important;
         }
     }
 
@@ -632,20 +668,18 @@
         align-self: flex-end;
         margin-top: 16px;
         margin-right: 16px;
-    
-        input {
-            position: absolute;
-            visibility: hidden;
+        
+        button {
+            height: 40px;
+            width: 40px;
+            border: none;
+            background: none;
         }
         
         svg {
             cursor: pointer;
             height: 40px;
             width: 40px;
-        }
-    
-        svg:hover {
-            fill: $snow-white !important;
         }
     }
 
@@ -685,8 +719,6 @@
 .hidden {
     display: none;
 }
-
-
 
 .liked {
     fill: $snow-white;
