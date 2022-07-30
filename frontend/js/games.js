@@ -4,29 +4,9 @@ const cardsSection = document.getElementById("cardsContainer");
 const base_url = 'https://rawg.io/api';
 const api_key = 'be591b53b20846a1badbf93b73218da7';
 const searchBar = document.getElementById("search-input");
-
-let gameData = [];
-
-
-// Search functionality
-
-searchBar.addEventListener('keyup', (e) => {
-    const searchGame = e.target.value.toLowerCase();
-
-    const filteredGames = gameData.filter((game) => {
-        return (
-            game.name.toString().toLowerCase().includes(searchGame) ||
-            game.parent_platforms.some((gamePlatform) => gamePlatform.platform.name.toLowerCase().includes(searchGame))
-        );
-    });
-
-    if (searchGame.length <= 4) {
-        cardsSection.innerHTML = '';
-        createCard(filteredGames);
-    }
-
-});
-
+const searchResults = document.getElementById("results");
+const crossCircle = document.getElementById("cancel-search");
+let searchData = [];
 
 // Call game API with fetch
 const api_url = `${base_url}/games?key=${api_key}`;
@@ -37,9 +17,9 @@ const getGames = async() => {
     if (response.status !==200){
         throw new Error('Cannot fetch the data');
     }
-    const data = await response.json();  // define array of data outside of async function
-    gameData = data.results;
-    return gameData;
+    const data = await response.json();
+    let info = data.results;
+    return info;
 };
 
 getGames()
@@ -230,12 +210,84 @@ btnOneColumn.addEventListener('click', function() {
     this.classList.toggle('btnColorOn');
 });
 
-// function gameConsole (parent_platforms) {
-//     let consoleList = "";
-//     for (let i=0; i < parent_platforms.length; i++){
-//         let platform = parent_platforms[i].platform;
+// Search functionality
+searchBar.oninput = function (e) {
+    const searchGame = e.target.value.toLowerCase();
+    let resultsArr = [];
+
+    if (searchGame.length > 0) {
+        requestGame(searchGame);
+        
+        resultsArr = searchData.filter((game) => {
+            return (game.name.toLowerCase().startsWith(searchGame.toLowerCase()) ||
+            game.parent_platforms.some((gamePlatform) => gamePlatform.platform.name.startsWith(searchGame.toLowerCase()))
+            )
+        });
+        resultsArr = resultsArr.map((game)=>{
+            return game = `<li>${game.name}</li>`;
+        });
+
+        searchResults.classList.remove('hidden');
+        crossCircle.classList.remove('hidden');
+        showSuggestions(resultsArr);
+
+    } else {
+        searchResults.classList.add('hidden');
+    }
+};
+
+function showSuggestions(list){
+    let listData;
+    if(!list.length){
+        userValue = searchBar.value;
+        listData = `<li>${userValue}</li>`;
+    }else{
+        listData = list.join('');
+    }
+    searchResults.innerHTML = listData;
+};
+
+// when clicking an <li> it completes the input text
+searchResults.onclick = function (e) {
+    const setValue = e.target.innerText;
+    searchBar.value = setValue;
+    this.innerHTML = '';
+};
+
+// when pressing enter the games appear
+searchBar.addEventListener('keyup', (e) => {
+    const searchGame = e.target.value.toLowerCase();
+    if(e.code === 'Enter'){
+        cardsSection.innerHTML = '';
+        searchResults.innerHTML = '';
+        crossCircle.classList.add('hidden');
+        requestGame(searchGame);
+        const filteredGames = searchData.filter((game) => {
+            return (
+                game.name.toString().toLowerCase().includes(searchGame) ||
+                game.parent_platforms.some((gamePlatform) => gamePlatform.platform.name.toLowerCase().includes(searchGame))
+            );
+        });
+        createCard(filteredGames);
+    }
+});
+
+function requestGame(searchGame) {
+    const searchUrl = `${base_url}/games?key=${api_key}&search=${searchGame}`;
     
-//         let platformName = platform.name;
-//     }
-//     return consoleList;
-// };
+    fetch(searchUrl)
+    .then (response => {
+        if (response.status !==200){
+            throw new Error('Cannot fetch the data');
+        } else {
+            return response.json();
+        }
+    })
+    .then(data => {getGamesInfo(data.results)
+        .then(response => {
+            searchData = response;
+            return searchData
+    });
+    })
+    .catch(error => alert(error.message));
+};

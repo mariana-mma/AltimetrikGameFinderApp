@@ -467,6 +467,7 @@ body {
   width: 362px;
   height: 47px;
   align-items: center;
+  justify-content: space-between;
   padding: 10.58px 8px 10.57px 8px;
   background: #ffffff;
   border-radius: 4px;
@@ -484,6 +485,7 @@ body {
   border-radius: 4px;
   width: 362px;
   max-height: 168px;
+  overflow-y: auto;
 }
 .search-options li {
   padding: 10px 26px 10px 6px;
