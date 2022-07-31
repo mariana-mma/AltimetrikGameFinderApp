@@ -1,5 +1,3 @@
-//const { forEach } = require("json-server-auth");
-
 const cardsSection = document.getElementById("cardsContainer");
 const base_url = 'https://rawg.io/api';
 const api_key = 'be591b53b20846a1badbf93b73218da7';
@@ -7,6 +5,7 @@ const searchBar = document.getElementById("search-input");
 const searchResults = document.getElementById("results");
 const crossCircle = document.getElementById("cancel-search");
 let searchData = [];
+let searchTimeout = null;
 
 // Call game API with fetch
 const api_url = `${base_url}/games?key=${api_key}`;
@@ -213,24 +212,28 @@ btnOneColumn.addEventListener('click', function() {
 // Search functionality
 searchBar.oninput = function (e) {
     const searchGame = e.target.value.toLowerCase();
-    let resultsArr = [];
 
     if (searchGame.length > 0) {
-        requestGame(searchGame);
+        if(searchTimeout != null){
+            clearTimeout(searchTimeout)
+        }
+        searchTimeout = setTimeout(() => {
+            let resultsArr = [];
+            requestGame(searchGame);
         
-        resultsArr = searchData.filter((game) => {
-            return (game.name.toLowerCase().startsWith(searchGame.toLowerCase()) ||
-            game.parent_platforms.some((gamePlatform) => gamePlatform.platform.name.startsWith(searchGame.toLowerCase()))
-            )
-        });
-        resultsArr = resultsArr.map((game)=>{
-            return game = `<li>${game.name}</li>`;
-        });
-
-        searchResults.classList.remove('hidden');
-        crossCircle.classList.remove('hidden');
-        showSuggestions(resultsArr);
-
+            resultsArr = searchData.filter((game) => {
+                return (game.name.toLowerCase().startsWith(searchGame.toLowerCase()) ||
+                game.parent_platforms.some((gamePlatform) => gamePlatform.platform.name.startsWith(searchGame.toLowerCase()))
+                )
+            });
+            resultsArr = resultsArr.map((game)=>{
+                return game = `<li>${game.name}</li>`;
+            });
+            searchResults.classList.remove('hidden');
+            crossCircle.classList.remove('hidden');
+            showSuggestions(resultsArr);
+        }, 1000);
+        
     } else {
         searchResults.classList.add('hidden');
     }
@@ -286,7 +289,6 @@ function requestGame(searchGame) {
     .then(data => {getGamesInfo(data.results)
         .then(response => {
             searchData = response;
-            return searchData
     });
     })
     .catch(error => alert(error.message));
